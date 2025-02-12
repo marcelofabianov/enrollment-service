@@ -1,0 +1,70 @@
+
+{
+    "name": "marcelofabianov/order-service",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "Db\\": "db/",
+            "Config\\": "config/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marcelo Fabiaono",
+            "email": "marcelofabianov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "ext-pdo": "*",
+        "robmorgan/phinx": "^0.16.6",
+        "vlucas/phpdotenv": "^5.6",
+        "ramsey/uuid": "^4.7"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "symfony/var-dumper": "^7",
+        "pyrech/composer-changelogs": "^2.1",
+        "pestphp/pest": "^2.33",
+        "pestphp/pest-plugin-stressless": "^2.2",
+        "pestphp/pest-plugin-type-coverage": "^2.8",
+        "pestphp/pest-plugin-watch": "^2.1",
+        "laravel/pint": "^1.14",
+        "ergebnis/composer-normalize": "*",
+        "pestphp/pest-plugin-faker": "^2.0",
+        "mockery/mockery": "^1.6",
+        "phpstan/phpstan": "^1.12",
+        "pestphp/pest-plugin-arch": "^2.7",
+        "captainhook/captainhook": "^5.24"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pyrech/composer-changelogs": true,
+            "pestphp/pest-plugin": true,
+            "ergebnis/composer-normalize": true
+        }
+    },
+    "scripts": {
+        "analyze": "./vendor/bin/phpstan analyse -c phpstan.neon",
+        "lint": "./vendor/bin/pint",
+        "test": "./vendor/bin/pest",
+        "test:coverage": "./vendor/bin/pest --coverage",
+        "test:watch": "./vendor/bin/pest --watch",
+        "migration:up": "./vendor/bin/phinx migrate",
+        "migration:down": "./vendor/bin/phinx rollback",
+        "post-autoload-dump": [
+            "vendor/bin/captainhook install -f -s"
+        ]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
