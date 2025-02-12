@@ -1,6 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
 function main(): void
 {
-    echo 'Hello World' . PHP_EOL;
+    echo 'Hello World'.PHP_EOL;
 }
