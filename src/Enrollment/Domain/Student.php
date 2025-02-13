@@ -99,8 +99,7 @@ final class Student implements StudentContract
         string $name,
         string $email,
         string $identification
-    ): self
-    {
+    ): self {
         return new self(
             Uuid::new(),
             $name,

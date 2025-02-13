@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Core\Contract\Domain\ValueObject\Version as VersionContract;
-use App\Core\Domain\Exception\ValueObjectException;
 use App\Core\Domain\ValueObject\Version;
+use App\Core\Exception\ValueObjectException;
 
 test('Deve retornar true quando validar um valor maior ou igual a 1')
     ->expect(Version::validate(1))->toBeTrue();

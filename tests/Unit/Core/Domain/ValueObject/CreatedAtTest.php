@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Core\Domain\Exception\ValueObjectException;
 use App\Core\Domain\ValueObject\CreatedAt;
+use App\Core\Exception\ValueObjectException;
 
 test('Deve retornar true quando validar uma data valida')
     ->expect(CreatedAt::validate(new DateTimeImmutable()))->toBeTrue();

@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Core\Domain\Exception\ValueObjectException;
 use App\Core\Domain\ValueObject\InactivatedAt;
+use App\Core\Exception\ValueObjectException;
 
 test('Deve retornar true quando validar uma data valida')
     ->expect(InactivatedAt::validate(new DateTimeImmutable()))->toBeTrue();

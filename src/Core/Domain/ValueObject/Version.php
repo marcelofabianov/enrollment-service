@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Core\Domain\ValueObject;
 
 use App\Core\Contract\Domain\ValueObject\Version as VersionContract;
-use App\Core\Domain\Exception\ValueObjectException;
+use App\Core\Exception\ValueObjectException;
 
 final readonly class Version implements VersionContract
 {

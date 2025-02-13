@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Core\Domain\ValueObject;
 
 use App\Core\Contract\Domain\ValueObject\CreatedAt as CreatedAtContract;
-use App\Core\Domain\Exception\ValueObjectException;
+use App\Core\Exception\ValueObjectException;
 use DateMalformedStringException;
 use DateTime;
 use DateTimeImmutable;

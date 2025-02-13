@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Core\Contract\Domain\ValueObject\Id;
-use App\Core\Domain\Exception\ValueObjectException;
 use App\Core\Domain\ValueObject\Uuid;
+use App\Core\Exception\ValueObjectException;
 
 test('Deve retornar true quando validado um UUID valido')
     ->expect(Uuid::validate('b601c572-4c3e-4298-9dd6-f8bb137ab5cd'))->toBeTrue();

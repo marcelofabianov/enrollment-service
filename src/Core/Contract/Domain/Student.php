@@ -24,6 +24,8 @@ interface Student
 
     public function getUpdatedAt(): UpdatedAtContract;
 
+    public function getVersion(): VersionContract;
+
     public function update(): void;
 
     public function isActive(): bool;
