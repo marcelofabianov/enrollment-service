@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Enrollment\Application\UseCase;
 
+use App\Core\Contract\Domain\Student as StudentContract;
 use App\Enrollment\Contract\CreateStudent\CreateStudentRepository;
 use App\Enrollment\Contract\CreateStudent\CreateStudentUseCase as CreateStudentUseCaseContract;
 use App\Enrollment\Contract\CreateStudent\CreateStudentUseCaseInput as CreateStudentUseCaseInputContract;
@@ -20,16 +21,20 @@ final readonly class CreateStudentUseCase implements CreateStudentUseCaseContrac
     /**
      * @throws StudentAlreadyExistsException
      */
-    public function execute(CreateStudentUseCaseInputContract $input): void
+    public function execute(CreateStudentUseCaseInputContract $input): StudentContract
     {
         if ($this->repository->exists($input->getIdentification())) {
             throw new StudentAlreadyExistsException();
         }
 
-        $this->repository->create(Student::new(
+        $student = Student::new(
             $input->getName(),
             $input->getEmail(),
             $input->getIdentification(),
-        ));
+        );
+
+        $this->repository->create($student);
+
+        return $student;
     }
 }

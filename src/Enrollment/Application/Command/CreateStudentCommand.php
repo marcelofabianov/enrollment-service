@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enrollment\Application\Command;
 
+use App\Core\Contract\Adapter\Event\EventBus as EventBusContract;
+use App\Core\Contract\Adapter\Logger as LoggerContract;
 use App\Core\Ports\Enrollment\Student\Command\CreateStudentCommand as CreateStudentCommandPort;
 use App\Core\Ports\Enrollment\Student\Command\CreateStudentCommandInput;
 use App\Enrollment\Application\UseCase\CreateStudentUseCaseInput;
@@ -13,6 +15,8 @@ use App\Enrollment\Contract\CreateStudent\CreateStudentValidate;
 final readonly class CreateStudentCommand implements CreateStudentCommandPort
 {
     public function __construct(
+        private EventBusContract $eventBus,
+        private LoggerContract $logger,
         private CreateStudentValidate $validate,
         private CreateStudentUseCase $useCase
     ) {
@@ -30,8 +34,13 @@ final readonly class CreateStudentCommand implements CreateStudentCommandPort
             $input->getIdentification(),
         ));
 
-        //... dispatch event
+        $this->eventBus();
 
-        //... logging
+        $this->logger->info('Student created');
+    }
+
+    private function eventBus(): void
+    {
+        //...
     }
 }
